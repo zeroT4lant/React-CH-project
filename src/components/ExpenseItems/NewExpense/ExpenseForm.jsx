@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState(""); //изначальные значения в полях в useState(ЗДЕСЬ)
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -28,7 +28,8 @@ const ExpenseForm = () => {
       date: new Date(enteredDate),
     };
 
-    console.log(expenseData); //выводит объект со всеми данными
+    props.onSaveExpenseData(expenseData); //передали пропсом функцию и передали объект
+    //поднимается до уровня NewExpense.jsx
     setEnteredTitle(""); //после отправки очищает поля :)
     setEnteredAmount("");
     setEnteredDate("");
